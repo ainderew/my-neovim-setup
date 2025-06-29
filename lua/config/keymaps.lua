@@ -3,9 +3,7 @@
 -- Add any additional keymaps here
 
 -- Closes all buffers
-vim.keymap.set("n", "<leader>bn", function()
-  vim.cmd("bufdo bd")
-end, { desc = "Close all buffers" })
+vim.keymap.set("n", "<leader>bn", "<cmd>%bd|e#<cr>", { desc = "Buffers › delete all but current" })
 
 -- Adds comma to the end ang opens new line
 vim.api.nvim_set_keymap("n", "<leader>c", "A,<Esc>o", { noremap = true, silent = true })
