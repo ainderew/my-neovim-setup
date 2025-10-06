@@ -21,3 +21,9 @@ vim.api.nvim_set_keymap(
 
 -- To close out of terminal mode in terminal with only escape key
 vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", { noremap = true })
+
+-- Gitlab MRs
+vim.keymap.set("n", "<leader>ml", ":GitLabListMRs<CR>", { desc = "List GitLab MRs" })
+vim.keymap.set("n", "<leader>ma", ":GitLabApprove<CR>", { desc = "Approve MR" })
+vim.keymap.set("n", "<leader>mr", ":GitLabRevoke<CR>", { desc = "Revoke Approval" })
+vim.keymap.set("n", "<leader>mc", ":GitLabComment<CR>", { desc = "Comment on MR" })

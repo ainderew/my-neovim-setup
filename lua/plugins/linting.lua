@@ -14,8 +14,18 @@ return {
     local lint = require("lint")
     local eslint = lint.linters.eslint_d -- grab the built-in linter
 
-    eslint.args = { "--format", "json", "--stdin-filename", "$FILENAME" }
+    -- eslint.args = { "--format", "json", "--stdin-filename", "$FILENAME" }
     eslint.stdin = false
+    eslint.args = {
+      "--no-warn-ignored",
+      "--format",
+      "json",
+      "--stdin",
+      "--stdin-filename",
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
+    }
 
     lint.linters_by_ft = opts.linters_by_ft
 
