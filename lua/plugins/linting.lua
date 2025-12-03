@@ -17,7 +17,6 @@ return {
     -- eslint.args = { "--format", "json", "--stdin-filename", "$FILENAME" }
     eslint.stdin = false
     eslint.args = {
-      "--no-warn-ignored",
       "--format",
       "json",
       "--stdin",

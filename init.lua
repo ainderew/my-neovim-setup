@@ -8,3 +8,7 @@ if zsh ~= "" then
   vim.opt.shell = zsh
   vim.opt.shellcmdflag = "-lic"
 end
+
+-- enable spell checker
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"

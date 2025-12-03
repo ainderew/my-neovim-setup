@@ -1,32 +1,48 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 return {
   {
-    "mattn/emmet-vim",
-    config = function()
-      -- Emmet configuration for JSX
-      vim.g.user_emmet_settings = {
-        javascript = {
-          extends = "jsx",
-        },
-        typescript = {
-          extends = "tsx",
-        },
-        typescriptreact = {
-          extends = "jsx",
-        },
-      }
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        emmet_ls = {
+          capabilities = capabilities,
+          filetypes = {
+            "html",
+            "css",
+            "scss",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
+          },
+          init_options = {
+            html = {
+              options = {
+                ["bem.enabled"] = true,
+              },
+            },
+          },
+          on_attach = function(client, bufnr)
+            -- Set up Ctrl+y , keybinding for Emmet expansion
+            vim.keymap.set({ "i", "n" }, "<C-y>,", function()
+              -- Trigger nvim-cmp completion
+              require("cmp").complete()
+            end, { buffer = bufnr, desc = "Trigger Emmet completion" })
 
-      -- Emmet preferences for JSX/TSX to use className instead of class
-      vim.g.user_emmet_mode = "tsx"
-
-      -- Key mappings for Emmet
-      vim.api.nvim_set_keymap("i", "<C-y>,", "<Plug>(emmet-expand-abbr)", {})
-      vim.api.nvim_set_keymap("n", "<C-y>,", "<Plug>(emmet-expand-abbr)", {})
-
-      -- Filetype detection for JSX/TSX
-      vim.cmd([[
-        autocmd FileType javascript.jsx EmmetInstall
-        autocmd FileType typescriptreact EmmetInstall
-      ]])
+            print("[emmet-ls] attached to buffer", bufnr)
+          end,
+        },
+      },
+    },
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      table.insert(opts.ensure_installed, "emmet-ls")
     end,
   },
 }
