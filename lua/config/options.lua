@@ -5,3 +5,6 @@
 -- enable spell checker
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+
+-- Enable automatic file reloading for Claude Code integration
+vim.opt.autoread = true

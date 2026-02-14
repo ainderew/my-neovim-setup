@@ -36,3 +36,7 @@ end, { desc = "Toggle test summary" })
 vim.keymap.set("n", "<leader>to", function()
   require("neotest").output.open({ enter = true })
 end, { desc = "Show test output" })
+
+-- Claude Code integration helpers
+vim.keymap.set("n", "<leader>ar", "<cmd>checktime<cr>", { desc = "AI › reload buffers" })
+vim.keymap.set("n", "<leader>aw", "<cmd>w<cr>", { desc = "AI › save for Claude" })
