@@ -82,29 +82,4 @@ return {
     },
   },
 
-  -- Other plugin configurations
-
-  -- neotest
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      -- Add language-specific adapters here:
-      "nvim-neotest/neotest-python", -- for Python
-      "nvim-neotest/neotest-jest", -- for JavaScript/TypeScript
-      "nvim-neotest/neotest-go", -- for Go
-      -- etc.
-    },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-python"), -- Configure for your languages
-          require("neotest-jest"),
-        },
-      })
-    end,
-  },
 }

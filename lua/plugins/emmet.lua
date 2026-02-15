@@ -32,7 +32,7 @@ return {
               require("cmp").complete()
             end, { buffer = bufnr, desc = "Trigger Emmet completion" })
 
-            print("[emmet-ls] attached to buffer", bufnr)
+
           end,
         },
       },

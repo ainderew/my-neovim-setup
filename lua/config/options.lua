@@ -8,3 +8,10 @@ vim.opt.spelllang = "en_us"
 
 -- Enable automatic file reloading for Claude Code integration
 vim.opt.autoread = true
+
+-- make Neovim's jobs use a login+interactive Zsh
+local zsh = vim.fn.exepath("zsh")
+if zsh ~= "" then
+  vim.opt.shell = zsh
+  vim.opt.shellcmdflag = "-lic"
+end
