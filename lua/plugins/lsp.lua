@@ -4,6 +4,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- I don't want the type hints (this disables it)
+      inlay_hints = { enabled = false },
       servers = {
         tailwindcss = {
           capabilities = capabilities,

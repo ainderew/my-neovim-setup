@@ -13,5 +13,5 @@ vim.opt.autoread = true
 local zsh = vim.fn.exepath("zsh")
 if zsh ~= "" then
   vim.opt.shell = zsh
-  vim.opt.shellcmdflag = "-lic"
+  vim.opt.shellcmdflag = "-lc"
 end
